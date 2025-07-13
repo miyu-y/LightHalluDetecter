@@ -61,14 +61,14 @@ for id in id_list:
 
 tri_test_data = []
 # filter test data for triplet method
-for i in range(len(test_data)//6):
+for i in range(len(test_data) // 6):
     score = 0
     for j in range(6):
-        score += test_data[i*6+j]["labels"]
+        score += test_data[i * 6 + j]["labels"]
     # if all outputs are hallucination (score == 6) or no hallucination (score == 0), skip
     if score != 0 and score != 6:
         for k in range(6):
-            tri_test_data.append(test_data[i*6+k])
+            tri_test_data.append(test_data[i * 6 + k])
 
 
 with open("dataset/2rag_truth_train.json", "w") as f:
@@ -82,7 +82,7 @@ with open("raw_rag_truth_dataset/response.jsonl", "r") as f:
     res_data = [json.loads(l) for l in f.readlines()]
 with open("raw_rag_truth_dataset/source_info.jsonl", "r") as f:
     info_data = [json.loads(l) for l in f.readlines()]
-    
+
 # span
 test_data = []
 for id in id_list:
@@ -121,14 +121,13 @@ for id in id_list:
 
 tri_test_data = []
 # filter test data for triplet method
-for i in range(len(test_data)//6):
+for i in range(len(test_data) // 6):
     score = 0
     for j in range(6):
-        score += test_data[i*6+j]["labels"]
+        score += test_data[i * 6 + j]["labels"]
     # if all outputs are hallucination (score == 6) or no hallucination (score == 0), skip
     if score != 0 and score != 6:
         for k in range(6):
-            tri_test_data.append(test_data[i*6+k])
+            tri_test_data.append(test_data[i * 6 + k])
 with open("dataset/2rag_truth_span_test.json", "w") as f:
     json.dump(tri_test_data, f, indent=4)
-
